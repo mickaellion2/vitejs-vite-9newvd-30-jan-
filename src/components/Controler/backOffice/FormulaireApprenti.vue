@@ -43,7 +43,7 @@
           <input
             id="dateNaissanceApprenti"
             type="date"
-            value="dateNaissance"
+            name="dateNaissance"
             @input="this.SiApprentiMineur"
             required
           />
@@ -51,12 +51,12 @@
         <div class="inputBoxFacturier">
           <span class="detailFacturier">Sexe</span>
           <select name="sexe">
-            <option value="M" label="Masculin">Masculin</option>
-            <option value="F" label="Féminin">Féminin</option>
+            <option value="M" label="Masculin"></option>
+            <option value="F" label="Féminin"></option>
           </select>
         </div>
         <div class="inputBoxFacturier">
-          <span class="detailFacturier">Dépt de naissance</span>
+          <span class="detailFacturier">Dépt. de naissance</span>
           <select
             id="departementsNaissanceListe"
             v-on:change="this.getListeCommunesNaissance"
@@ -335,11 +335,11 @@
             name="nir"
             placeholder="obligatoire"
             minlength="13"
-            maxlength="13"
+            maxlength="15"
             required
           />
         </div>
-        <div class="inputBoxFacturier">
+        <!--div class="inputBoxFacturier">
           <span class="detailFacturier">Clé n° sécurité sociale</span>
           <input
             type="text"
@@ -349,7 +349,7 @@
             maxlength="2"
             required
           />
-        </div>
+        </div-->
         <div
           class="inputBoxFacturier"
           style="display: flex; flex-direction: row"
@@ -392,7 +392,7 @@
             <span class="detailFacturier">Nom du représentant légal</span>
             <input
               type="text"
-              name="nom_du_representant_legal"
+              name="responsableLegal.adresse.nom"
               minlength="1"
               maxlength="80"
             />
@@ -401,7 +401,7 @@
             <span class="detailFacturier">Adresse du représentant légal</span>
             <input
               type="text"
-              name="adresse_du_representant_legal"
+              name="responsableLegal.adresse.adresse"
               minlength="1"
               maxlength="50"
             />
@@ -412,7 +412,7 @@
             >
             <input
               type="text"
-              name="code_postal_du_representant_legal"
+              name="responsableLegal.adresse.codePostal"
               minlength="0"
               maxlength="5"
             />
@@ -421,7 +421,7 @@
             <span class="detailFacturier">Prénom du représentant légal</span>
             <input
               type="text"
-              name="prenom_du_representant_legal"
+              name="responsableLegal.prenom"
               minlength="1"
               maxlength="80"
             />
@@ -432,7 +432,7 @@
             >
             <input
               type="text"
-              name="complement_adresse_du_representant_legal"
+              name="responsableLegal.adresse.adresse2"
               minlength="0"
               maxlength="155"
             />
@@ -441,7 +441,7 @@
             <span class="detailFacturier">Commune du représentant légal</span>
             <input
               type="text"
-              name="commune_du_representant_legal"
+              name="responsableLegal.adresse.commune"
               minlength="0"
               maxlength="80"
             />
@@ -494,35 +494,6 @@ export default {
       messageErreur: '',
       listeGeographie: [],
       tableauRecherche: [],
-
-      nom_de_naissance: '',
-      nom_usage: '',
-      prenom: '',
-      dateNaissance: '',
-      sexe: '',
-      commune_de_naissance: '',
-      departement_de_naissance: '',
-      adresse: '',
-      complement_adresse: '',
-      code_postal: '',
-      commune: '',
-      nationalite: '',
-      telephone: '',
-      courriel: '',
-      travailleur_handicape: false,
-      numero_de_securite_sociale: '',
-      cle_numero_de_securite_sociale: '',
-      situation_apprenti: '',
-      dernier_diplome: '',
-      intitule_dernier_diplome: '',
-      derniere_classe_suivie: '',
-      mineur_emancipe: false,
-      nom_du_representant_legal: '',
-      adresse_du_representant_legal: '',
-      code_postal_du_representant_legal: '',
-      prenom_du_representant_legal: '',
-      complement_adresse_du_representant_legal: '',
-      commune_du_representant_legal: '',
     };
   },
   mounted() {
