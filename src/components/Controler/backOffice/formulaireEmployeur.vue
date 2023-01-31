@@ -163,7 +163,7 @@
           <input
             type="tel"
             pattern="^((\+)33|0)[1-9](\d{2}){4}$"
-            v-model="telephone"
+            name="telephone"
             placeholder="obligatoire"
             minlength="1"
             maxlength="13"
@@ -174,7 +174,7 @@
           <span class="detailFacturier">Courriel du contact</span>
           <input
             type="email"
-            v-model="courriel"
+            name="courriel"
             placeholder="obligatoire"
             minlength="1"
             maxlength="80"

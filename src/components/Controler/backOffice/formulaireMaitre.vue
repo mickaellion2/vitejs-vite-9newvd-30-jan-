@@ -142,43 +142,41 @@ export default {
 
   data() {
     return {
-      attestation_un: false,
-      attestation_deux: false,
-      nom_un: '',
-      nom_deux: '',
-      prenom_un: '',
-      prenom_deux: '',
-      dateNaissance_un: '',
-      dateNaissance_deux: '',
+      action: construitURLService.methods.construitURLConnectionBack(
+        'dossier',
+        configuration.data().urlPossibles.modifier
+      ),
     };
   },
   methods: {
-    SiMaitrePublic(event) {
-      if (this.$data.afficheMaitrePublic) {
-        this.$data.afficheMaitrePublic = false;
-        //this.$emit('afficheMineurEmancipe', event);
-      } else {
-        this.$data.afficheMaitrePublic = true;
-        this.$emit('afficheMaitrePublic', event);
+    init() {
+      let obj = this.$parent.itemEdite,
+        form = this.$el,
+        _id_ = this.$parent.idCourant;
+      form.elements['__id__'].value = _id_;
+      if (obj) {
+        for (let inputElt of form.elements) {
+          let prop = inputElt.name;
+          if (prop) {
+            if (prop == '__id__') {
+              continue;
+            }
+            let props = prop.split('.'),
+              v;
+            v =
+              props.reduce(function (a, c) {
+                return a[c];
+              }, obj) || '';
+            if (inputElt.type == 'checkbox') {
+              inputElt.checked = v == 1 || v == 'true';
+            } else {
+              inputElt.value = v;
+            }
+          }
+        }
       }
     },
-    validationSiret() {
-      let regex = /^[0-9]{14}$/;
-      let argument = document.getElementById('inputSiret').value;
-      if (regex.test(argument)) {
-        console.log('siret validé');
-      } else {
-        console.log("Le format du siret n'est pas bon");
-      }
-    },
-    validationEffectif() {
-      let argument = document.getElementById('inputEffectif');
-      if (argument.value >= 0) {
-        console.log('Effectif validé');
-      } else {
-        console.log("Le format de l'effectif n'est pas bon");
-      }
-    },
+    beforeSubmit() {},
     async rentrerMaitresBDD(event) {
       console.log(this.$data.nom_de_naissance);
 

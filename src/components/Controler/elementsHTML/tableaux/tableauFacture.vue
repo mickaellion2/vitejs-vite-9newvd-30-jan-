@@ -1,7 +1,13 @@
 <template>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+
   <table id="tablefacturier" @click="editFacturier">
     <thead id="theadTableauFacturier">
       <tr>
+        <th>Actions</th>
         <th>N°</th>
         <th>Apprenti</th>
         <th>Formation</th>
@@ -16,6 +22,7 @@
     </thead>
     <tbody id="tbodyfiltresFacturier">
       <tr>
+        <td></td>
         <td id="premiereCaseTableauRecherche">
           <form id="formcreadossier">
             <input type="hidden" name="cdate" value="" />
@@ -97,6 +104,18 @@
         v-for="(item, index) in itemsAffiches"
         :data-num="index + nbItemsParPage * pageCourante"
       >
+        <td>
+          <i
+            class="fa fa-arrow-right"
+            aria-hidden="true"
+            @click="transmettreDossier"
+          ></i
+          ><i
+            class="fa fa-trash-o"
+            aria-hidden="true"
+            @click="mettreDossierCorbeille"
+          ></i>
+        </td>
         <td>
           {{
             item.cerfa.numeroExterne || item.cerfa.numeroInterne || 'NOUVEAU'
@@ -394,6 +413,13 @@ export default {
         valeur.lastChild.value = '';
       }
     },
+    mettreDossierCorbeille(e) {
+      console.log(this.items);
+      console.log(e);
+      console.log(e.parentNode);
+      console.log(e.parentElement);
+    },
+    transmettreDossier() {},
   },
 };
 </script>
