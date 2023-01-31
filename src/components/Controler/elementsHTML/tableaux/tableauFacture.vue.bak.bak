@@ -507,13 +507,6 @@ export default {
         valeur.lastChild.value = '';
       }
     },
-    mettreDossierCorbeille(e) {
-      console.log(this.items);
-      console.log(e);
-      console.log(e.parentNode);
-      console.log(e.parentElement);
-    },
-    transmettreDossier() {},
   },
 };
 </script>
